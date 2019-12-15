@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 
 import Burger from '../../components/Burger';
 import BuildControls from '../../components/Burger/BuildControls';
+import Modal from '../../components/UI/Modal';
+import OrderSummary from '../../components/Burger/OrderSummary';
 
 // Global variables are typically named in all caps
 const INGREDIENT_PRICES = {
@@ -93,6 +95,9 @@ class BurgerBuilder extends Component {
 
     return (
       <Fragment>
+        <Modal>
+          <OrderSummary ingredients={this.state.ingredients} />
+        </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           ingredientRemoved={this.removeIngredientHandler}
