@@ -34,11 +34,7 @@ const ingredient = ({ type }) => {
       ingredient = null;
   };
 
-  return (
-    <div>
-
-    </div>
-  )
+  return ingredient;
 };
 
 ingredient.propTypes = {
