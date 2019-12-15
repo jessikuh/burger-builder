@@ -19,6 +19,10 @@ const orderSummary = (props) => {
         A delicious burger with the following ingredients:
       </p>
 
+      <p>
+        <strong>Total Price: ${props.total.toFixed(2)}</strong>
+      </p>
+
       <ul>
         {ingredientSummary}
       </ul>
