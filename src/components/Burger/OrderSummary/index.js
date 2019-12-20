@@ -1,48 +1,56 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Button from '../../UI/Button/Button';
 
-const orderSummary = (props) => {
-  const ingredientSummary = Object.keys(props.ingredients)
-    .map((igKey) => {
-      return (
-        <li key={igKey + Date.now()}>
-          <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {props.ingredients[igKey]}
-        </li>
-      );
-    });
+// This could be converted back to functional component if not using componentDidUpdate
+class OrderSummary extends Component {
+  // Used to test if this was still updating
+  // componentDidUpdate () {
+  //   console.log('Order summary will update')
+  // }
 
-  return (
-    <Fragment>
-      <h3>Your Order</h3>
-      <p>
-        A delicious burger with the following ingredients:
-      </p>
+  render () {
+    const ingredientSummary = Object.keys(this.props.ingredients)
+      .map((igKey) => {
+        return (
+          <li key={igKey + Date.now()}>
+            <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {this.props.ingredients[igKey]}
+          </li>
+        );
+      });
 
-      <p>
-        <strong>Total Price: ${props.total.toFixed(2)}</strong>
-      </p>
+    return (
+      <Fragment>
+        <h3>Your Order</h3>
+        <p>
+          A delicious burger with the following ingredients:
+        </p>
 
-      <ul>
-        {ingredientSummary}
-      </ul>
+        <p>
+          <strong>Total Price: ${this.props.total.toFixed(2)}</strong>
+        </p>
 
-      <p>
-        Continue to checkout?
-      </p>
+        <ul>
+          {ingredientSummary}
+        </ul>
 
-      <Button
-        clicked={props.purchaseCancelled}
-        btnType="Danger">
-        Cancel
-      </Button>
-      <Button
-        clicked={props.purchaseContinue}
-        btnType="Success">
-        Continue
-      </Button>
-    </Fragment>
-  )
+        <p>
+          Continue to checkout?
+        </p>
+
+        <Button
+          clicked={this.props.purchaseCancelled}
+          btnType="Danger">
+          Cancel
+        </Button>
+        <Button
+          clicked={this.props.purchaseContinue}
+          btnType="Success">
+          Continue
+        </Button>
+      </Fragment>
+    )
+  }
 };
 
-export default orderSummary;
+export default OrderSummary;
