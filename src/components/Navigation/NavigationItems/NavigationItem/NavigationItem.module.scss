@@ -1,0 +1,38 @@
+.navigation_item {
+  @media (min-width: 500px) {
+    height: 100%;
+    margin: 0;
+    width: auto;
+  }
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  margin: 10px 0;
+  width: 100%;
+
+  a {
+    @media (min-width: 500px) {
+      border-bottom: 4px solid transparent;
+      color: #fff;
+      height: 100%;
+      padding: 16px 10px;
+      width: auto;
+    }
+    box-sizing: border-box;
+    color: #8f5c2c;
+    display: block;
+    text-decoration: none;
+    width: 100%;
+
+    &.active,
+    &:hover,
+    &:active {
+      @media (min-width: 500px) {
+        background-color: #8f5c2c;
+        border-bottom: 4px solid #4084c8;
+        color: #fff;
+      }
+      color: #4084c8;
+    }
+  }
+}
