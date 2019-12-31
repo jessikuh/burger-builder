@@ -4,6 +4,7 @@ import Burger from '../../components/Burger';
 import BuildControls from '../../components/Burger/BuildControls';
 import Modal from '../../components/UI/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary';
+import axios from '../../axios-orders';
 
 // Global variables are typically named in all caps
 const INGREDIENT_PRICES = {
@@ -94,7 +95,25 @@ class BurgerBuilder extends Component {
   }
 
   purchaseContinueHandler = () => {
-    alert('Continue!');
+    // alert('Continue!');
+    const order = {
+      ingredients: this.state.ingredients,
+      price: this.state.totalPrice,
+      customer: {
+        name: 'Jessica Stamos',
+        address: {
+          street: 'Test Street',
+          zipCode: '42344',
+          country: 'United States'
+        },
+        email: 'jessicanstamos@gmail.com'
+      },
+      deliveryMethod: 'fastest',
+    };
+
+    axios.post('/orders.json', order)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
   };
 
   render () {
