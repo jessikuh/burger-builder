@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import classes from './Burger.module.scss';
 
@@ -6,13 +7,9 @@ import Ingredient from './Ingredient';
 
 const burger = ({ ingredients }) => {
   let transformedIngredients = Object.keys(ingredients)
-    .map((igKey) => {
-      return [...Array(ingredients[igKey])]
-        .map((_, i) => <Ingredient key={igKey + i} type={igKey} />);
-    })
-    .reduce((arr, el) => {
-      return arr.concat(el)
-    }, []);
+    .map((igKey) => [...Array(ingredients[igKey])]
+      .map((_, i) => <Ingredient key={igKey + i} type={igKey} />))
+    .reduce((arr, el) => arr.concat(el), []);
 
   if (transformedIngredients.length === 0) {
     transformedIngredients = <p>Please start adding ingredients.</p>;
@@ -25,6 +22,6 @@ const burger = ({ ingredients }) => {
       <Ingredient type="bread-bottom" />
     </div>
   );
-}
+};
 
-export default burger;
+export default withRouter(burger);
