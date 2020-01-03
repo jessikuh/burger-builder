@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 import Layout from './hoc/Layout';
 import BurgerBuilder from './containers/BurgerBuilder';
@@ -8,8 +9,8 @@ function App() {
   return (
     <div>
       <Layout>
-        <BurgerBuilder />
-        <Checkout />
+        <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/" component={BurgerBuilder} />
       </Layout>
     </div>
   );

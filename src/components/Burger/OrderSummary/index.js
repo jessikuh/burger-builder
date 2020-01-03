@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import Button from '../../UI/Button/Button';
 
@@ -9,25 +9,29 @@ class OrderSummary extends Component {
   //   console.log('Order summary will update')
   // }
 
-  render () {
+  render() {
     const ingredientSummary = Object.keys(this.props.ingredients)
-      .map((igKey) => {
-        return (
-          <li key={igKey + Date.now()}>
-            <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {this.props.ingredients[igKey]}
-          </li>
-        );
-      });
+      .map((igKey) => (
+        <li key={igKey + Date.now()}>
+          <span style={{ textTransform: 'capitalize' }}>{igKey}</span>
+          :
+
+          {this.props.ingredients[igKey]}
+        </li>
+      ));
 
     return (
-      <Fragment>
+      <>
         <h3>Your Order</h3>
         <p>
           A delicious burger with the following ingredients:
         </p>
 
         <p>
-          <strong>Total Price: ${this.props.total.toFixed(2)}</strong>
+          <strong>
+            Total Price: $
+            {this.props.total.toFixed(2)}
+          </strong>
         </p>
 
         <ul>
@@ -40,17 +44,19 @@ class OrderSummary extends Component {
 
         <Button
           clicked={this.props.purchaseCancelled}
-          btnType="Danger">
+          btnType="Danger"
+        >
           Cancel
         </Button>
         <Button
           clicked={this.props.purchaseContinue}
-          btnType="Success">
+          btnType="Success"
+        >
           Continue
         </Button>
-      </Fragment>
-    )
+      </>
+    );
   }
-};
+}
 
 export default OrderSummary;
