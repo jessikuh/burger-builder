@@ -24,7 +24,9 @@ module.exports = {
     'react',
   ],
   rules: {
-    'react/state-in-constructor': 0,
+    'linebreak-style': 0,
     'react/jsx-filename-extension': 0,
+    'react/prefer-stateless-function': 0,
+    'react/state-in-constructor': 0,
   },
 };
