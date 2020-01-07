@@ -1,16 +1,20 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Layout from './hoc/Layout';
 import BurgerBuilder from './containers/BurgerBuilder';
 import Checkout from './containers/Checkout/Checkout';
+import Orders from './containers/Orders/Orders';
 
 function App() {
   return (
     <div>
       <Layout>
-        <Route path="/checkout" component={Checkout} />
-        <Route exact path="/" component={BurgerBuilder} />
+        <Switch>
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/orders" component={Orders} />
+          <Route exact path="/" component={BurgerBuilder} />
+        </Switch>
       </Layout>
     </div>
   );
