@@ -27,6 +27,7 @@ class ContactData extends Component {
           name: 'email',
           placeholder: 'Your Email',
         },
+        label: 'Your Email',
         value: '',
       },
       street: {
@@ -36,6 +37,7 @@ class ContactData extends Component {
           name: 'street',
           placeholder: 'Your Street',
         },
+        label: 'Your Street',
         value: '',
       },
       postalCode: {
@@ -45,6 +47,7 @@ class ContactData extends Component {
           name: 'postal',
           placeholder: 'Your Postal Code',
         },
+        label: 'Your Postal Code',
         value: '',
       },
       country: {
@@ -71,6 +74,7 @@ class ContactData extends Component {
             },
           ],
         },
+        label: 'Delivery Method',
         value: '',
       },
     },
