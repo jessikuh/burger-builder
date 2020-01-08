@@ -157,22 +157,23 @@ class ContactData extends Component {
   };
 
   checkValidity = (value, rules) => {
-    let isValid = false;
+    // Setting to true to
+    const isValid = [];
 
+    // Push all to isValid, if one is false, return validation error
     if (rules.required) {
-      // Use trim to remove spaces
-      isValid = value.trim() !== '';
+      isValid.push(value.trim() !== '');
     }
 
     if (rules.minLength) {
-      isValid = value.length >= rules.minLength;
+      isValid.push(value.length >= rules.minLength);
     }
 
     if (rules.maxLength) {
-      isValid = value.length >= rules.maxLength;
+      isValid.push(value.length <= rules.maxLength);
     }
 
-    return isValid;
+    return !(isValid.indexOf(false) > -1);
   }
 
   render() {
