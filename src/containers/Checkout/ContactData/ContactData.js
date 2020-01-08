@@ -103,6 +103,7 @@ class ContactData extends Component {
         },
         label: 'Delivery Method',
         value: '',
+        validation: {},
         valid: true,
       },
     },
