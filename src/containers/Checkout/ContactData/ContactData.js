@@ -102,7 +102,7 @@ class ContactData extends Component {
           ],
         },
         label: 'Delivery Method',
-        value: '',
+        value: 'fastest',
         validation: {},
         valid: true,
       },
