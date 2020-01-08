@@ -82,21 +82,19 @@ class ContactData extends Component {
     event.preventDefault();
 
     const { ingredients, price } = this.props;
+    const formData = {};
+
+    Object.keys(this.state.orderForm).map((identifier) => {
+      formData[identifier] = this.state.orderForm[identifier].value;
+
+      return formData;
+    });
 
     this.setState({ loading: true });
     const order = {
       ingredients,
       price,
-      customer: {
-        name: 'Jessica Stamos',
-        address: {
-          street: 'Test Street',
-          zipCode: '42344',
-          country: 'United States',
-        },
-        email: 'jessicanstamos@gmail.com',
-      },
-      deliveryMethod: 'fastest',
+      orderData: formData,
     };
 
     axios.post('/orders.json', order)
