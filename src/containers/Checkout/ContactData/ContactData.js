@@ -103,10 +103,11 @@ class ContactData extends Component {
         },
         label: 'Delivery Method',
         value: '',
+        valid: true,
       },
     },
     loading: false,
-    purchasing: false,
+    formIsValid: false,
   };
 
   orderHandler = (event) => {
@@ -155,8 +156,16 @@ class ContactData extends Component {
 
     updatedOrderForm[inputIdentifier] = updatedFormElement;
 
+    let formIsValid = true;
+    Object.keys(updatedOrderForm).map((identifier) => {
+      formIsValid = updatedOrderForm[identifier].valid && formIsValid;
+
+      return formIsValid;
+    });
+
     this.setState({
       orderForm: updatedOrderForm,
+      formIsValid,
     });
   };
 
@@ -208,6 +217,7 @@ class ContactData extends Component {
         <Button
           btnType="Success"
           clicked={this.orderHandler}
+          disabled={!this.state.formIsValid}
         >
           ORDER
         </Button>
