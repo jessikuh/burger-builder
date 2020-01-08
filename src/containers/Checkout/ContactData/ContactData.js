@@ -113,7 +113,7 @@ class ContactData extends Component {
       });
   };
 
-  inputChangedHandler = (event, inputIdentifier) => {
+  inputChangedHandler = (inputIdentifier) => (event) => {
     const updatedOrderForm = { ...this.state.orderForm };
 
     // Deep clone
@@ -147,7 +147,8 @@ class ContactData extends Component {
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
             value={formElement.config.value}
-            changed={(event) => this.inputChangedHandler(event, formElement.id)}
+            //
+            changed={this.inputChangedHandler(formElement.id)}
           />
         ))}
         <Button
