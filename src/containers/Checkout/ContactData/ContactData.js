@@ -19,6 +19,10 @@ class ContactData extends Component {
         },
         label: 'Your Name',
         value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
       },
       email: {
         elementType: 'input',
@@ -29,6 +33,10 @@ class ContactData extends Component {
         },
         label: 'Your Email',
         value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
       },
       street: {
         elementType: 'input',
@@ -39,6 +47,10 @@ class ContactData extends Component {
         },
         label: 'Your Street',
         value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
       },
       postalCode: {
         elementType: 'input',
@@ -49,6 +61,12 @@ class ContactData extends Component {
         },
         label: 'Your Postal Code',
         value: '',
+        validation: {
+          required: true,
+          maxLength: 5,
+          minLength: 5,
+        },
+        valid: false,
       },
       country: {
         elementType: 'input',
@@ -59,6 +77,10 @@ class ContactData extends Component {
         },
         label: 'Your Country',
         value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
       },
       deliveryMethod: {
         elementType: 'select',
@@ -123,12 +145,35 @@ class ContactData extends Component {
 
     updatedFormElement.value = event.target.value;
 
+    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+
     updatedOrderForm[inputIdentifier] = updatedFormElement;
+
+    console.log(updatedFormElement);
 
     this.setState({
       orderForm: updatedOrderForm,
     });
   };
+
+  checkValidity = (value, rules) => {
+    let isValid = false;
+
+    if (rules.required) {
+      // Use trim to remove spaces
+      isValid = value.trim() !== '';
+    }
+
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength;
+    }
+
+    if (rules.maxLength) {
+      isValid = value.length >= rules.maxLength;
+    }
+
+    return isValid;
+  }
 
   render() {
     const formElementsArray = [];
